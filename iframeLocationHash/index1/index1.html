@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>index1</title>
+</head>
+
+<body>
+  <script>
+    let ifr = document.createElement('iframe');
+    ifr.style.display = 'none';
+    ifr.src = "http://10.0.7.162:8081/index2.html#data";
+    document.body.appendChild(ifr);
+
+    window.addEventListener('hashchange', function (e) {
+      console.log('获得的数据是：', location.hash.substring(1));
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>index2</title>
+</head>
+
+<body>
+  <script>
+    switch (location.hash) {
+      case "#data":
+        callback();
+        break;
+    }
+
+    function callback() {
+      const data = "some number: 1111"
+      try {
+        parent.location.hash = data;
+      } catch (e) {
+        // ie, chrome 下的安全机制无法修改 parent.location.hash
+        // 所以要利用一个中间的代理 iframe 
+        var ifrproxy = document.createElement('iframe');
+        ifrproxy.style.display = 'none';
+        ifrproxy.src = 'http://10.0.7.162:8080/index3.html#' + data; // 该文件在请求域名的域下
+        document.body.appendChild(ifrproxy);
+      }
+    }
+  </script>
+</body>
+
+</html>

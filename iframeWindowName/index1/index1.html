@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>index1.html</title>
+</head>
+
+<body>
+  <script>
+    let data = '';
+    const ifr = document.createElement('iframe');
+    ifr.src = "http://localhost:8081/index2.html";
+    ifr.style.display = 'none';
+    document.body.appendChild(ifr);
+    ifr.onload = function () {
+      ifr.onload = function () {
+        data = ifr.contentWindow.name;
+        console.log('收到数据:', data);
+      }
+      // 由于 a.html 页面和该页面 iframe 的 src 如果不同源的话，则无法操作 iframe 里的任何东西，所以就取不到 iframe 的 name 值。所以我们需要在 b.html 加载完后重新换个 src 去指向一个同源的 html 文件，或者设置成 'about:blank;' 都行，这时候我只要在 a.html 相同目录下新建一个 c.html 的空页面即可。
+      ifr.src = "http://localhost:8080/index3.html";
+    }
+  </script>
+</body>
+
+</html>
