@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>async</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <script src="./clone.js"></script>
+  <script>
+    console.log(typeJudgment.isArray([]))
+    console.log(typeJudgment.isNumber(NaN))
+    console.log(typeJudgment.get(NaN))
+    console.log(typeJudgment)
+
+    var obj = {
+      a: 1,
+      b: function () {
+        cosole.log(1111111)
+      },
+      c: {
+        d: 3
+      },
+      e: [1, 2, 3, 4],
+      f: null
+    }
+    var objCopy = copy(obj,true)
+    console.log(obj.a === objCopy.a)
+    console.log(obj.b === objCopy.b)
+    console.log(obj.c === objCopy.c)
+    console.log(obj.c.d === objCopy.c.d)
+    console.log(obj.e === objCopy.e)
+    console.log(obj.f === objCopy.f)
+  </script>
+</body>
+
+</html>

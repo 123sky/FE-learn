@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>async</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <script src="./throttle.js"></script>
+  <script>
+    var log = function () {
+      console.log(this.text)
+    }
+    window.onresize = function () {
+      /* 
+      // 不做节流处理
+      log()
+       */
+
+      // 进行节流处理
+      throttle(log, {
+        text: '节流处理'
+      })
+    }
+
+    /* 
+    小坑，如果之间传递参数的话，像这样throttle(log('节流处理'))
+    其实相当于把log返回的结果传递给throttle，所以不能直接传递参数
+    */
+  </script>
+</body>
+
+</html>
