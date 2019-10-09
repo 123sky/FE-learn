@@ -1,11 +1,11 @@
 getArticleList().then((data1) => {
   console.log(data1)
-  getArticle(data1[0].id).then((data2) => {
-    console.log(data2)
-    getAuthor(data2.authorId).then((data3) => {
-      console.log(data3)
-    })
-  })
+  return getArticle(data1[0].id)
+}).then((data2) => {
+  console.log(data2)
+  return getAuthor(data2.authorId)
+}).then((data3) => {
+  console.log(data3)
 })
 
 
